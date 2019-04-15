@@ -1,7 +1,13 @@
 from django.shortcuts import render
 
-from django.http import HttpResponse
+from .models import Contacts
 
 def index(request):
-    return HttpResponse("<h2>Hi Sreenivas </h2>")
+
+    contacts = Contacts.objects.all()
+
+    context = {
+        'contacts' : contacts
+    }
+    return render(request, 'contacts/index.html',context)
 
